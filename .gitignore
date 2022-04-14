@@ -339,3 +339,4 @@ fabric.properties
 
 # Cython debug symbols
 
+*.json
