@@ -14,3 +14,10 @@
 - [black; документацию можно найти далее](https://pypi.org/project/black/)
 - [isort; аналогично](https://pypi.org/project/isort/)
 - [flake8; аналогично](https://pypi.org/project/flake8/)
+
+
+#### (Optional; Актуально для `lesson_2`) Запуск локального сервера
+Чтобы запустить локальный сервер из папки `local_server` необходимо выполнить следующие шаги:
+1. `pip install flask`
+2. перейти в командной строке в папку `local_server`; например, cd `local_server/`
+3. `flask run`
