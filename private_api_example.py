@@ -1,4 +1,4 @@
-import time
+# import time
 from pprint import pprint
 
 import requests
@@ -13,15 +13,14 @@ HEADERS = {
     "Chrome/98.0.4758.80 Safari/537.36",
 }
 
-response = requests.get(AJAX_URL_TEMPLATE % 1, headers=HEADERS)
-print()
-
+# response = requests.get(AJAX_URL_TEMPLATE % 1, headers=HEADERS)
+# print()
 
 example_url = (
-    "https://www.luisaviaroma.com/ru-ru/shop/"
-    "%d0%bc%d1%83%d0%b6%d1%87%d0%b8%d0%bd%d1%8b"
-    "/%d0%be%d0%b1%d1%83%d0%b2%d1%8c"
-    "?lvrid=_gm_i4&Page=2&ajax=true"
+    "https://www.luisaviaroma.com/ru-it/shop/"
+    "%d0%bc%d1%83%d0%b6%d1%87%d0%b8%d0%bd%d1%8b/"
+    "%d0%be%d0%b4%d0%b5%d0%b6%d0%b4%d0%b0"
+    "?lvrid=_gm_i1&Page=2&ajax=true"
 )
 
 headers = {
@@ -29,8 +28,10 @@ headers = {
     "Accept-Encoding": "gzip, deflate, br",
     "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
     "Content-Type": "application/json",
-    "Referer": "https://www.luisaviaroma.com/ru-ru/shop/"
-    "%D0%BC%D1%83%D0%B6%D1%87%D0%B8%D0%BD%D1%8B"
+    "Referer": "https://www.luisaviaroma.com/ru-it/shop/"
+    "%D0%BC%D1%83%D0%B6%D1%87%D0%B8%D0%BD%D1%8B/"
+    "%D0%BE%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0"
+    "?lvrid=_gm_i1"
     "/%D0%BE%D0%B1%D1%83%D0%B2%D1%8C?lvrid=_gm_i4",
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36",
@@ -45,7 +46,7 @@ headers = {
 with requests.Session() as session:
     session.headers.update(headers)
     init_response = session.get(headers["Referer"])
-    time.sleep(2)
+    # time.sleep(2)
     print("INIT DONE!")
     response = session.get(example_url)
     pprint(response.json())
