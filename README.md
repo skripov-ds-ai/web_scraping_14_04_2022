@@ -9,6 +9,9 @@
 
 Библиотека dotenv - [python-dotenv](https://pypi.org/project/python-dotenv/)
 
+### Работа со Scrapy
+- [Pipeline для работы с MongoDB](https://docs.scrapy.org/en/latest/topics/item-pipeline.html#write-items-to-mongodb)
+
 ### Необязательное
 - [pre-commit и git hooks](https://pre-commit.com/)
 - [black; документацию можно найти далее](https://pypi.org/project/black/)
