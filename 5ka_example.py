@@ -11,7 +11,7 @@ URL = "https://5ka.ru/special_offers"
 DRIVER_PATH = "./selenium_drivers/chromedriver"
 
 options = webdriver.ChromeOptions()
-options.add_argument("--start-maximized")
+# options.add_argument("--start-maximized")
 driver = webdriver.Chrome(DRIVER_PATH, options=options)
 driver.get(URL)
 # driver.refresh()
@@ -40,18 +40,20 @@ print()
 
 
 i = 0
-timeout = 10
+timeout = 30
 while True:
     print(i)
     print()
+    wait = WebDriverWait(driver, timeout=timeout)
     try:
-        button = WebDriverWait(driver, timeout=timeout).until(
+        button = wait.until(
             EC.element_to_be_clickable(
                 (By.CLASS_NAME, "more-btn-cont")
                 # кнопка не кликабельна, но её "родитель" - да
-                # EC.presence_of_element_located(
-                #     (By.CLASS_NAME, "add-more-btn")
             )
+            # EC.presence_of_element_located(
+            #         (By.CLASS_NAME, "add-more-btn")
+            # )
         )
         print()
         button.click()

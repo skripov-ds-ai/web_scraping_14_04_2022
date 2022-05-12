@@ -1,4 +1,4 @@
-# import time
+import time
 from pprint import pprint
 
 import requests
@@ -46,7 +46,7 @@ headers = {
 with requests.Session() as session:
     session.headers.update(headers)
     init_response = session.get(headers["Referer"])
-    # time.sleep(2)
+    time.sleep(2)
     print("INIT DONE!")
     response = session.get(example_url)
     pprint(response.json())

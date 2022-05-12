@@ -12,7 +12,7 @@ url = "https://ru.puma.com/sportivnye-tovary-dlja-muzhchin.html"
 
 options = webdriver.ChromeOptions()
 # options.add_argument("--window-size=200,200")
-options.add_argument("--start-maximized")
+# options.add_argument("--start-maximized")
 
 driver = webdriver.Chrome(DRIVER_PATH, options=options)
 driver.get(url)
@@ -35,11 +35,13 @@ ok = True
 # the second variant
 timeout = 30
 i = 0
+wait = WebDriverWait(driver, timeout)
 while ok:
+    wait = WebDriverWait(driver, timeout)
     print(i)
     print()
     try:
-        button = WebDriverWait(driver, timeout).until(
+        button = wait.until(
             # EC.presence_of_element_located(
             #     (By.CLASS_NAME, button_class)
             # )
