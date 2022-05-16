@@ -341,3 +341,7 @@ fabric.properties
 
 *.json
 *.txt
+*.jpeg
+*.jpg
+*.png
+images/
