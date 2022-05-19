@@ -8,7 +8,7 @@ repos:
         language: system
         types: [python]
         args: ["--check"]
-        exclude: "^otparser/(settings|middlewares|spiders/online_trade).py$"
+        exclude: "^vc/(settings|middlewares|spiders/online_trade).py$"
 
       - id: isort
         name: isort
@@ -22,4 +22,4 @@ repos:
         entry: flake8
         language: system
         types: [python]
-        exclude: "^otparser/(settings|middlewares|spiders/online_trade).py$"
+        exclude: "^vc/(settings|middlewares|spiders/online_trade).py$"

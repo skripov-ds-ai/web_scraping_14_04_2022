@@ -1,4 +1,4 @@
-# Scrapy settings for otparser project
+# Scrapy settings for vc project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,27 +7,28 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "otparser"
+BOT_NAME = "vc"
 
-SPIDER_MODULES = ["otparser.spiders"]
-NEWSPIDER_MODULE = "otparser.spiders"
+SPIDER_MODULES = ["vc.spiders"]
+NEWSPIDER_MODULE = "vc.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36"
 )
+
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS = 8
+CONCURRENT_REQUESTS = 4
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1.25
+DOWNLOAD_DELAY = 1.1
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
@@ -39,31 +40,21 @@ COOKIES_ENABLED = True
 # TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-DEFAULT_REQUEST_HEADERS = {
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
-    "Content-Type": "text/html; charset=windows-1251",
-}
-
-
-IMAGES_STORE = "images"
-IMAGES_THUMBS = {
-    "ultra_big": (200, 5),
-    "small": (5, 5),
-    "random": (42, 41),
-}
+# DEFAULT_REQUEST_HEADERS = {
+#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+#   'Accept-Language': 'en',
+# }
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
-#    'otparser.middlewares.OtparserSpiderMiddleware': 543,
+#    'vc.middlewares.VcSpiderMiddleware': 543,
 # }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
-#    'otparser.middlewares.OtparserDownloaderMiddleware': 543,
+#    'vc.middlewares.VcDownloaderMiddleware': 543,
 # }
 
 # Enable or disable extensions
@@ -74,23 +65,22 @@ IMAGES_THUMBS = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-    "otparser.pipelines.OtparserImagesPipeline": 299,
-    "otparser.pipelines.OtparserPipeline": 300,
-}
+# ITEM_PIPELINES = {
+#    'vc.pipelines.VcPipeline': 300,
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
-# AUTOTHROTTLE_ENABLED = True
-# # The initial download delay
-# AUTOTHROTTLE_START_DELAY = 5
-# # The maximum download delay to be set in case of high latencies
-# AUTOTHROTTLE_MAX_DELAY = 5.5
-# # The average number of requests Scrapy should be sending in parallel to
-# # each remote server
-# AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
-# # Enable showing throttling stats for every response received:
-# AUTOTHROTTLE_DEBUG = True
+AUTOTHROTTLE_ENABLED = True
+# The initial download delay
+AUTOTHROTTLE_START_DELAY = 9
+# The maximum download delay to be set in case of high latencies
+AUTOTHROTTLE_MAX_DELAY = 60
+# The average number of requests Scrapy should be sending in parallel to
+# each remote server
+AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+# Enable showing throttling stats for every response received:
+AUTOTHROTTLE_DEBUG = True
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
