@@ -3,14 +3,11 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
-
-import scrapy
-
-# useful for handling different item types with a single interface
+from scrapy.http import Request
 from scrapy.pipelines.images import ImagesPipeline
 
 
-class OtparserPipeline:
+class LabirintPipeline:
     def process_item(self, item, spider):
         print("PROCESS_ITEM")
         print()
@@ -18,12 +15,21 @@ class OtparserPipeline:
         return item
 
 
-class OtparserImagesPipeline(ImagesPipeline):
+class LabirintImagesPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
-        if item["img_urls"]:
-            for img_url in item["img_urls"]:
+        img_urls = []
+        img_urls.extend(item["img_urls"])
+        print()
+        if item["main_img_url"]:
+            img_urls.append(item["main_img_url"])
+        print()
+        img_urls = set(img_urls)
+        print()
+
+        if img_urls:
+            for img_url in img_urls:
                 try:
-                    yield scrapy.Request(img_url)
+                    yield Request(img_url)
                 except Exception as e:
                     print(e)
 
@@ -33,4 +39,6 @@ class OtparserImagesPipeline(ImagesPipeline):
         if results:
             item["img_info"] = [r[1] for r in results if r[0]]
             del item["img_urls"]
+            del item["main_img_url"]
+        print()
         return item
